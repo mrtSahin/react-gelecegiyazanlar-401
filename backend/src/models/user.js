@@ -17,7 +17,7 @@ const UserSchema = new Schema({
 	},
 	role: {
 		type: String,
-		default: "user",
+		default: "admin",// 20 ve 43. satirda admin yollayinca role admin oluyor. ikisininde ayni anda admin olarak girilmasi gerekli
 		enum: ["user", "admin"],
 	},
 });
@@ -40,6 +40,6 @@ UserSchema.methods.isValidPass = async function (pass) {
 	return await bcrypt.compare(pass, this.password);
 };
 
-const User = mongoose.model("user", UserSchema);
+const User = mongoose.model("admin", UserSchema); // 20 ve 43. satirda admin yollayinca role admin oluyor. ikisininde ayni anda admin olarak girilmasi gerekli
 
 export default User;

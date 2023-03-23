@@ -4,6 +4,9 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
+
+
+
 import Navbar from './components/Navbar';
 import SignIn from './pages/Auth/SignIn';
 import SignUp from './pages/Auth/SignUp';
