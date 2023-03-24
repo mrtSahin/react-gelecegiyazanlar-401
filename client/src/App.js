@@ -11,6 +11,7 @@ import Navbar from './components/Navbar';
 import SignIn from './pages/Auth/SignIn';
 import SignUp from './pages/Auth/SignUp';
 import Products from './pages/Products';
+import ProductDetail from './pages/ProductDetail';
 
 function App() {
   return (
@@ -19,7 +20,8 @@ function App() {
         <Navbar />
         <div id='content'>
           <Routes>
-            <Route path="/" element={<Products />} />
+            <Route path="/" exact element={<Products />} />
+            <Route path="/product/:product_id" element={<ProductDetail />} />
             <Route path="/signin" element={<SignIn />} />
             <Route path="/signup" element={<SignUp />} />
           </Routes>
