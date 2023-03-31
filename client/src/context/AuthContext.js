@@ -1,6 +1,6 @@
 import { Flex, Spinner } from "@chakra-ui/react";
 import { useState, createContext, useEffect, useContext } from "react";
-import { fetchMe } from "../api";
+import { fetchLogout, fetchMe } from "../api";
 
 
 const AuthContext = createContext()
@@ -13,13 +13,13 @@ const AuthProvider = ({ children }) => {
     useEffect(() => {
         (async () => {
             try {
-                const me = await fetchMe()
-                setLoggedIn(true)
+                const me = await fetchMe() // kullanıcı bilgileri kritik olmayan bilgiler haricinde api den soruluyor ve serUser ile user verisine ekleniyor
                 setUser(me)
+                setLoggedIn(true)
                 setLoading(false)
                 console.log('me', me)
             } catch (e) {
-                
+                setLoading(false)
             }
         })()
     }, [])
@@ -29,14 +29,25 @@ const AuthProvider = ({ children }) => {
         console.log(data)
         setLoggedIn(true)
         setUser(data)
-        localStorage.setItem('access-token', data.accessToken)
+        localStorage.setItem('access-token', data.accessToken) // kullanıcı sisteme giriş yaptıktan sonra bu bilgileri her seferinde apiden çekmek yerine localstorage a kaydediyoruz ve lazım olduğunda oradan alıyoruz
         localStorage.setItem('refresh-token', data.refreshToken)
+    }
+
+    const logout = async (callback) => {
+        setLoggedIn(false)
+        setUser(null)
+        const response = await fetchLogout()
+        localStorage.removeItem("refresh-token") // artık sistemde bir kullanıcı olmadığı için localstorage dan bu bilgiler siliniyor
+        localStorage.removeItem("access-token")
+        console.log(response)
+        callback() // yönlendirme işleminin yapıldığı callback metod
     }
 
     const values = {
         loggedIn,
         user,
-        login
+        login,
+        logout
     }
 
     if (loading) {

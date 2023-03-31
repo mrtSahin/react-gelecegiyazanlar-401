@@ -4,13 +4,14 @@ import { useFormik } from 'formik'
 import { validate } from './validations'
 import { fetchRegister } from '../../../api'
 import { useAuth } from '../../../context/AuthContext'
+import { useNavigate } from 'react-router'
 
 
 
 function SignUp() {
 
   const { login } = useAuth()
-
+  const navigate = useNavigate()
   const formik = useFormik({
     initialValues: {
       email: '',
@@ -22,6 +23,7 @@ function SignUp() {
         const registerResponse = await fetchRegister({ email: values.email, password: values.password })
         console.log(registerResponse)
         login(registerResponse)
+        navigate('/profile')
       } catch (e) {
         bag.setErrors({ general: e.response.data.message }) // custom hata olusturduk
         console.log(e)
