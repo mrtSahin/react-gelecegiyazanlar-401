@@ -9,6 +9,6 @@ function ProtectedRoutes() {
     return (
         loggedIn ? <Outlet/> : <Navigate to={{pathname:'/'}}/> // Outlet ile elemanlari basiyoruz.
     )
-}
+} // ileride değişiklikler olacak
 
 export default ProtectedRoutes
