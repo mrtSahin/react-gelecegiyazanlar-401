@@ -3,12 +3,17 @@ import { Link } from 'react-router-dom'
 import styles from './styles.module.css'
 import { Button } from '@chakra-ui/react'
 import { useAuth } from '../../context/AuthContext'
+import { useBasket } from '../../context/BasketContext'
 
 
 function Navbar() {
-    const { loggedIn } = useAuth() // SignUp ya da SignIn componentinde sisteme kullanici giris yaptiginda AuthContext userinden loggedIn ile kulanicinin sisteme giris yapmis oldugunun bilgisi true yapilir.
+    const { user, loggedIn } = useAuth() // SignUp ya da SignIn componentinde sisteme kullanici giris yaptiginda AuthContext userinden loggedIn ile kulanicinin sisteme giris yapmis oldugunun bilgisi true yapilir.
     // useAuth ile de bu bilgiyi burada alip islemler yapabiliriz. 
-    console.log(loggedIn)
+    //console.log(user)
+
+    const { items } = useBasket()
+
+
     return (
         <nav className={styles.nav}>
             <div className={styles.left}>
@@ -26,6 +31,24 @@ function Navbar() {
                 {
                     loggedIn ? // eger kullanici giris yapmissa profile butonunu goster
                         <>
+                            {// eger giris yapmissa sepetteki urunleri gosterebiliriz.
+                                items.length > 0 &&
+                                <Link to='/basket'>
+                                    <Button colorScheme='pink' variant='outline'>
+                                        Basket ({items.length})
+                                    </Button>
+                                </Link>
+                            }
+
+                            {
+                                user?.role === 'admin' &&
+                                (
+                                    <Link to='/admin'>
+                                        <Button colorScheme='pink' variant='ghost'>Admin</Button>
+                                    </Link>
+                                )
+                            }
+
                             <Link to='/profile'>
                                 <Button colorScheme='pink'>Profile</Button>
                             </Link>

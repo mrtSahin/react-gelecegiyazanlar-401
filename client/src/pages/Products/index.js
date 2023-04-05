@@ -26,7 +26,7 @@ function Products() {
       }  // sayfa numarasini kontrol edebilmek icin fonksiyon
     })// 'products' bu aslında bir key
 
-  if (status === 'loading') return 'Loading...'
+  if (status === 'loading') return `Loading${status}`
 
   if (error) return 'An error has occurred: ' + error.message
 

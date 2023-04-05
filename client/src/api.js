@@ -20,33 +20,43 @@ axios.interceptors.request.use(function (config) {
 
 export const fetchProductPost = async ({ pageParam = 0 }) => {
     const { data } = await axios.get(`${baseEndPoint}/product?page=${pageParam}`)
+    // console.log('fetchProduct',data)
     return data
 }
 
 export const fetchProductDetailPost = async (id) => {
     const { data } = await axios.get(`${baseEndPoint}/product/${id}`)
+    // console.log('fetchProductDetail',data)
     return data
 }
 
 export const fetchRegister = async (input) => {
     const { data } = await axios.post(`${baseEndPoint}/auth/register`, input)
-    console.log(data)
+    // console.log('fetchRegister',data)
     return data
 }
 
 export const fetchLogin = async (input) => {
     const { data } = await axios.post(`${baseEndPoint}/auth/login`, input)
-    console.log(data)
+    // console.log('fetchLogin',data)
     return data
 }
 
 export const fetchMe = async () => {
     const { data } = await axios.get(`${baseEndPoint}/auth/me`)
+    // console.log('fetchProduct',data)
     return data
 }
 
 export const fetchLogout = async () => {
     const { data } = await axios.post(`${baseEndPoint}/auth/logout`, { refresh_token: localStorage.getItem("refresh-token") })
-    console.log(data)
+    // console.log('fetchLogout',data)
     return data
 }
+
+export const fetchOrder = async (input) => {
+    const { data } = await axios.post(`${baseEndPoint}/order`,input)
+    // console.log('fetchOrder',data)
+    return data
+}
+

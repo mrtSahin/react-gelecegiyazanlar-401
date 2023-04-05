@@ -19,6 +19,7 @@ function SignUp() {
       passwordConfirm: ''
     },
     onSubmit: async (values, bag) => {
+      console.log('lahavle')
       try {
         const registerResponse = await fetchRegister({ email: values.email, password: values.password })
         console.log(registerResponse)
@@ -59,6 +60,7 @@ function SignUp() {
               <FormControl>
                 <FormLabel>E-Mail</FormLabel>
                 <Input
+                
                   name='email'
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
@@ -70,6 +72,7 @@ function SignUp() {
               <FormControl mt='4'>
                 <FormLabel>Password</FormLabel>
                 <Input
+                autoComplete='true'
                   name='password'
                   type='password'
                   onChange={formik.handleChange}
@@ -83,6 +86,7 @@ function SignUp() {
               <FormControl mt='4'>
                 <FormLabel>Password Confirm</FormLabel>
                 <Input
+                autoComplete='true'
                   name='passwordConfirm'
                   type='password'
                   onChange={formik.handleChange}

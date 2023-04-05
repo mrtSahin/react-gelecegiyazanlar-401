@@ -1,6 +1,5 @@
 import './App.css';
 import {
-  BrowserRouter as Router,
   Routes,
   Route,
   BrowserRouter,
@@ -12,7 +11,10 @@ import SignUp from './pages/Auth/SignUp';
 import Products from './pages/Products';
 import ProductDetail from './pages/ProductDetail';
 import Profile from './pages/Profile';
-import ProtectedRoutes from './pages/ProtectedRoute';
+import PrivateRoute from './pages/PrivateRoute';
+import Basket from './pages/Basket';
+import NotFound from './pages/NotFound';
+import Admin from './pages/Admin';
 
 function App() {
 
@@ -27,10 +29,10 @@ function App() {
             <Route path="/product/:product_id" element={<ProductDetail />} />
             <Route path="/signin" element={<SignIn />} />
             <Route path="/signup" element={<SignUp />} />
-            <Route element={<ProtectedRoutes />} >
-              <Route path='/profile' element={<Profile />} exact />
-            </Route>
-
+            <Route path="/basket" element={<Basket />} />
+            <Route path='/profile' element={<PrivateRoute ><Profile /></PrivateRoute>} ></Route>
+            <Route path='/admin' element={<PrivateRoute admin={true}><Admin /></PrivateRoute>} ></Route>
+            <Route path="*" element={<NotFound />} /> {/**  * hic biri ile eslesmeme durumuna denk geliyor   */}
           </Routes>
         </div>
       </div>
