@@ -50,7 +50,7 @@ export const fetchMe = async () => {
 
 export const fetchLogout = async () => {
     const { data } = await axios.post(`${baseEndPoint}/auth/logout`, { refresh_token: localStorage.getItem("refresh-token") })
-    // console.log('fetchLogout',data)
+    //console.log('fetchLogout',data)
     return data
 }
 
