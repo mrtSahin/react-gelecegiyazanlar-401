@@ -32,7 +32,6 @@ const AuthProvider = ({ children }) => {
         localStorage.setItem('access-token', data.accessToken) // kullanıcı sisteme giriş yaptıktan sonra bu bilgileri her seferinde apiden çekmek yerine localstorage a kaydediyoruz ve lazım olduğunda oradan alıyoruz
         localStorage.setItem('refresh-token', data.refreshToken)
         localStorage.setItem('loggedIn', true)
-
     }
 
     const logout = async (callback) => {
