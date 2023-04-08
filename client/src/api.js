@@ -54,9 +54,20 @@ export const fetchLogout = async () => {
     return data
 }
 
-export const fetchOrder = async (input) => {
-    const { data } = await axios.post(`${baseEndPoint}/order`,input)
+export const postOrder = async (input) => {
+    const { data } = await axios.post(`${baseEndPoint}/order`, input)
+    // console.log('postOrder',data)
+    return data
+}
+
+export const fetchOrders = async () => {
+    const { data } = await axios.get(`${baseEndPoint}/order`)
     // console.log('fetchOrder',data)
     return data
 }
 
+export const deleteProduct = async (product_id) => {
+    const { data } = await axios.delete(`${baseEndPoint}/product/${product_id}`)
+    // console.log('deleteProduct',data)
+    return data
+}

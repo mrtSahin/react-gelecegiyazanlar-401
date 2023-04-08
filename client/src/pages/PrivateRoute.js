@@ -4,14 +4,14 @@ import { useAuth } from '../context/AuthContext'
 
 function PrivateRoute({children,admin}) { // profile icin undefined doner // admin icin true doner
 
-    console.log(admin)
+    //console.log(admin)
 
     const girisYapilmisMi=localStorage.getItem('loggedIn')
     //console.log(typeof(girisYapilmisMi))
     
 
     const {user}=useAuth() 
-    console.log(user?.role)
+    //console.log(user?.role)
 
     // sayfayi yenileyince user bilgisinin farkli donmesini ve admin butonun sayfayi yenilediken sonra gelmesini login metodu icerisinde cozduk.
     // user bilgisinin dogru gecisini sagladik.

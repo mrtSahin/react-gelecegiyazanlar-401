@@ -1,26 +1,25 @@
 import React from 'react'
 import './styles.css'
-import { Link, Route, Routes, useLocation } from 'react-router-dom'
+import { Link, Route, Routes } from 'react-router-dom'
 import { Box } from '@chakra-ui/react'
-import Home from './Home'
+import Home from './Home/index'
+import Orders from './Orders/index'
+import Products from './Products/index'
 
 function Admin() {
-
-  const location=useLocation()
-  console.log(location)
   return (
     <div>
 
       <nav>
         <ul className='admin-menu'>
           <li>
-            <Link to='/'>Home</Link>
+            <Link to='/admin'>Home</Link>
           </li>
           <li>
-            <Link to='/'>Orders</Link>
+            <Link to='/admin/orders'>Orders</Link>
           </li>
           <li>
-            <Link to='/'>Product</Link>
+            <Link to='/admin/products'>Product</Link>
           </li>
         </ul>
       </nav>
@@ -28,7 +27,9 @@ function Admin() {
 
       <Box mt="10">
         <Routes>
-          <Route path='/' element={<Home/>}/>
+          <Route exact path='/' element={<Home />} />
+          <Route path="/orders" element={<Orders />} />
+          <Route path="/products" element={<Products />} />
         </Routes>
       </Box>
     </div>

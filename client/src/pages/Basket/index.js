@@ -19,7 +19,7 @@ import {
   Textarea,
 } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
-import { fetchOrder } from '../../api'
+import { postOrder } from '../../api'
 
 function Basket() {
   const { items, emptyBasket, removeFromBasket } = useBasket()
@@ -42,7 +42,7 @@ function Basket() {
     }
 
    
-    await fetchOrder(input)
+    await postOrder(input)
     // const response = await fetchOrder(input)
     // console.log('RESPONSE', response)
     // console.log(itemIds)
