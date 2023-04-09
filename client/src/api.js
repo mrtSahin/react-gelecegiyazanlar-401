@@ -30,6 +30,12 @@ export const fetchProductDetailPost = async (id) => {
     return data
 }
 
+export const postProduct = async (input) => {
+    const { data } = await axios.post(`${baseEndPoint}/product`,input)
+    // console.log('postProduct',data)
+    return data
+}
+
 export const fetchRegister = async (input) => {
     const { data } = await axios.post(`${baseEndPoint}/auth/register`, input)
     // console.log('fetchRegister',data)
@@ -71,3 +77,10 @@ export const deleteProduct = async (product_id) => {
     // console.log('deleteProduct',data)
     return data
 }
+
+export const updateProduct = async (input,product_id) => {
+    const { data } = await axios.put(`${baseEndPoint}/product/${product_id}`,input)
+    console.log('updateProduct',data)
+    return data
+}
+

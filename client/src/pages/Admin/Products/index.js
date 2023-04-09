@@ -4,7 +4,8 @@ import { deleteProduct, fetchProductPost } from '../../../api'
 import { Popconfirm, Table } from 'antd';
 import moment from 'moment';
 import { Link } from 'react-router-dom';
-
+import NewProduct from './new';
+import { Button } from '@chakra-ui/react';
 
 function Products() {
 
@@ -33,6 +34,7 @@ function Products() {
 
   return (
     <div>
+      <Link to='/admin/products/newproduct'>Add new product</Link>
       <Table dataSource={data}>
         <Column title='Title' dataIndex='title' key='title' />
         <Column title='Price' dataIndex='price' key='price' />
